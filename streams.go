@@ -17,7 +17,15 @@ func Map[T any](apply func(T) T, itr []T) []T{
 	return res
 }
 
-func Filter() {}
+func Filter[T any](fn func(T) bool, itr []T) []T{
+	res := make([]T, 0)
+	for _, e := range itr {
+		if fn(e) {
+			res = append(res, e)
+		}
+	}
+	return res
+}
 
 func Reduce() {}
 

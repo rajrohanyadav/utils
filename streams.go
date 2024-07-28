@@ -9,8 +9,8 @@ func Contains[T comparable](val T, itr []T) bool {
 	return false
 }
 
-func Map[T any](apply func(T) T, itr []T) []T{
-	res := make([]T, len(itr))
+func Map[T any, U any](apply func(T) U, itr []T) []U{
+	res := make([]U, len(itr))
 	for i, e := range itr {
 		res[i] = apply(e)
 	}

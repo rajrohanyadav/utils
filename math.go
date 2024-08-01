@@ -4,12 +4,9 @@ type comparableNumbers interface {
   int|int8|int16|int32|int64|float32|float64  
 }
 
-func Max[T comparableNumbers](st ...T) T {
-  if len(st) == 0 {
-    return 0
-  }
-  max := st[0]
-  for _, e := range st {
+func Max[T comparableNumbers](a T, b ...T) T {
+  max := a
+  for _, e := range b {
     if (e > max) {
       max = e
     }
@@ -17,12 +14,9 @@ func Max[T comparableNumbers](st ...T) T {
   return max
 }
 
-func Min[T comparableNumbers](st ...T) T {
-  if len(st) == 0 {
-    return 0
-  }
-  min := st[0]
-  for _, e := range st {
+func Min[T comparableNumbers](a T, b ...T) T {
+  min := a
+  for _, e := range b {
     if (e < min) {
       min = e
     }

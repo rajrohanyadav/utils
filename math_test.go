@@ -11,10 +11,6 @@ func TestMax(t *testing.T) {
 		input []int
 		expected int
 	}{
-		"no number": {
-			input: []int{},
-			expected: 0,
-		},
 		"one number": {
 			input: []int{1},
 			expected: 1,
@@ -31,7 +27,7 @@ func TestMax(t *testing.T) {
 	
 	for tn, td := range tests {
 		t.Run(tn, func(tt *testing.T) {
-			assert.Equal(tt, td.expected, Max(td.input...))
+			assert.Equal(tt, td.expected, Max(td.input[0], td.input[1:]...))
 		})
 	}
 }
@@ -41,10 +37,6 @@ func TestMin(t *testing.T) {
 		input []int
 		expected int
 	}{
-		"no number": {
-			input: []int{},
-			expected: 0,
-		},
 		"one number": {
 			input: []int{1},
 			expected: 1,
@@ -61,7 +53,7 @@ func TestMin(t *testing.T) {
 	
 	for tn, td := range tests {
 		t.Run(tn, func(tt *testing.T) {
-			assert.Equal(tt, td.expected, Min(td.input...))
+			assert.Equal(tt, td.expected, Min(td.input[0], td.input[1:]...))
 		})
 	}
 }

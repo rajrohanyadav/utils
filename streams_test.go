@@ -87,7 +87,24 @@ func TestFilter(t *testing.T) {
 	}
 }
 
-func TestReduce(t *testing.T) {}
+func TestReduce(t *testing.T) {
+	tests := map[string]struct{
+		itr []int
+		expected int
+		reduceFunc func(int, int) int
+	}{
+		"sum": {
+			itr: []int{1,2,3,4},
+			expected: 10,
+			reduceFunc: func(i1, i2 int) int {return i1 + i2},
+		},
+	}
+	for tn, td := range tests {
+		t.Run(tn, func(tt *testing.T) {
+			assert.Equal(tt, td.expected, Reduce(td.reduceFunc, td.itr))
+		})
+	}	
+}
 
 func TestReverse(t *testing.T) {
 	tests := map[string]struct{

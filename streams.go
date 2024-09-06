@@ -27,7 +27,13 @@ func Filter[T any](fn func(T) bool, itr []T) []T{
 	return res
 }
 
-func Reduce() {}
+func Reduce[T any](fn func(T, T) T, itr []T) T {
+	res := itr[0]
+	for i:=1;i<len(itr);i++ {
+		res = fn(res, itr[i])
+	}
+	return res
+}
 
 func Reverse[T any](itr []T) {
   for i, j := 0, len(itr) - 1; i < j; i, j = i+1, j-1 {
